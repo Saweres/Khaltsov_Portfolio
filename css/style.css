@@ -897,7 +897,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .comparison-item {
-    aspect-ratio: 16/9;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
