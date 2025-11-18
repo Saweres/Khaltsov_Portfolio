@@ -1671,3 +1671,291 @@ h1, h2, h3, h4, h5, h6 {
 .mb-3 { margin-bottom: 1.5rem; }
 .mb-4 { margin-bottom: 2rem; }
 .mb-5 { margin-bottom: 3rem; }
+
+
+/* ============================================
+   Problem & Solution - Vertical Layout 16:9
+   ============================================ */
+
+/* Блок сравнения */
+.design-comparison-block {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.design-comparison-block:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(139, 92, 246, 0.3);
+    transform: translateY(-5px);
+}
+
+/* Заголовок блока */
+.comparison-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.comparison-header h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Бейджи Before/After */
+.comparison-badge {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-problem {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.badge-solution {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+/* Обёртка изображения с соотношением 16:9 */
+.comparison-image-wrapper {
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.ratio-16-9 {
+    aspect-ratio: 16 / 9;
+}
+
+/* Если браузер не поддерживает aspect-ratio */
+@supports not (aspect-ratio: 16 / 9) {
+    .ratio-16-9 {
+        padding-bottom: 56.25%; /* 9/16 = 56.25% */
+        height: 0;
+        position: relative;
+    }
+    
+    .ratio-16-9 .image-placeholder,
+    .ratio-16-9 img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Placeholder для изображения */
+.comparison-image-wrapper .image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+    border: 2px dashed rgba(139, 92, 246, 0.3);
+}
+
+.comparison-image-wrapper .image-placeholder i {
+    font-size: 3rem;
+    color: rgba(139, 92, 246, 0.5);
+    margin-bottom: 15px;
+}
+
+.comparison-image-wrapper .image-placeholder p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 10px 0;
+}
+
+.comparison-image-wrapper .image-placeholder .image-note {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+/* Реальное изображение */
+.comparison-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Описание сравнения */
+.comparison-description {
+    padding: 0 10px;
+}
+
+.comparison-description h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.comparison-description ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comparison-description ul li {
+    padding: 10px 0 10px 35px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.comparison-description ul li:last-child {
+    border-bottom: none;
+}
+
+.comparison-description ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Иконка для Issues */
+.design-comparison-block:first-of-type .comparison-description ul li::before {
+    content: '✕';
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Иконка для Improvements */
+.design-comparison-block:nth-of-type(2) .comparison-description ul li::before {
+    content: '✓';
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+/* Блок результатов */
+.results-block {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.results-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.results-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.results-content h5 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.results-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* ============================================
+   Адаптивность для мобильных
+   ============================================ */
+
+@media (max-width: 768px) {
+    .design-comparison-block {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .comparison-header h4 {
+        font-size: 1.2rem;
+    }
+    
+    .comparison-badge {
+        padding: 4px 12px;
+        font-size: 0.75rem;
+    }
+    
+    .comparison-image-wrapper .image-placeholder i {
+        font-size: 2rem;
+    }
+    
+    .comparison-image-wrapper .image-placeholder p {
+        font-size: 0.95rem;
+    }
+    
+    .comparison-description ul li {
+        padding-left: 30px;
+        font-size: 0.9rem;
+    }
+    
+    .results-block {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .results-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .results-icon i {
+        font-size: 1.2rem;
+    }
+    
+    .results-content h5 {
+        font-size: 1.1rem;
+    }
+    
+    .results-content p {
+        font-size: 0.9rem;
+    }
+}
