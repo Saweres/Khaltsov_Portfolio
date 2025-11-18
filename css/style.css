@@ -998,7 +998,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .showcase-item {
-    aspect-ratio: 16/10;
+    aspect-ratio: 16/9;
     border-radius: 12px;
     overflow: hidden;
     transition: var(--transition);
